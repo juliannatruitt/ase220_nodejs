@@ -6,3 +6,7 @@ Garrett Kinder
 - Julianna Truitt
 
     - Worked on the functionality for the server.js file.
+
+- Isha Nepal
+
+    - Worked on the signup.js file
