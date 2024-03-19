@@ -5,7 +5,6 @@ const server = http.createServer(function(req, res){
     if (req.method=='GET'){
         if(req.url.includes('/signup') || req.url.includes('/signin')){
             console.log(req.method);
-            res.writeHead(200, {'Content-Type': 'text/html'});
             res.write(fs.readFileSync('./html/signup_signin.html', 'utf-8'));
             res.end();
         }

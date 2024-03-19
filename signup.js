@@ -15,7 +15,7 @@ rl.question('Enter your email address: ', (email) => {
             password
         };
 
-        fs.appendFileSync('credentials.csv', `${user.email},${user.password}\n`);
+        fs.appendFileSync('credentials.csv', `${user.email};${user.password};\n`);
         console.log('User successfully signed up.');
         rl.close();
     });
