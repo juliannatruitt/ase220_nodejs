@@ -20,21 +20,21 @@ const server = http.createServer(function(req, res){
                 req.on('end', function(){
                     let exists = fs.existsSync('./credentials.csv');
                     if (exists){
-                        let [username, password] = body.split('&');
-                        username = username.split('=')[1];
+                        let [email, password] = body.split('&');
+                        email = email.split('=')[1];
                         password = password.split('=')[1];
                         fs.readFile('./credentials.csv','utf8',function(error,content){
                             users = content.split('\n');
                             for(let i=0; i<users.length;i++){
                                 user = users[i].split(';')[0];
                                 console.log(user);
-                                if (user === username){
-                                    res.write('<h1>User with this username already exists!</h1>');
+                                if (user === email){
+                                    res.write('<h1>User with this email already exists!</h1>');
                                     res.end();
                                     return;
                                 }
                             }
-                        fs.appendFileSync('./credentials.csv',`${username};${password};\n`);
+                        fs.appendFileSync('./credentials.csv',`${email};${password};\n`);
                         res.write("<h1>User Successfuly Created!</h1>");
                         //res.write('<a href=\"localhost:5500/signin\">go to signin page</a>'); //come back to this - figure out why this wont work
                         res.end();
@@ -50,14 +50,14 @@ const server = http.createServer(function(req, res){
                 req.on('end', function(){
                     let exists = fs.existsSync('./credentials.csv');
                     if (exists){
-                        let [username, password] = body.split('&');
-                        username = username.split('=')[1];
+                        let [email, password] = body.split('&');
+                        email = email.split('=')[1];
                         password = password.split('=')[1];
                         fs.readFile('./credentials.csv','utf8',function(error,content){
                             users = content.split('\n');
                             for(let i=0; i<users.length;i++){
-                                const [thisusername, thispassword] = users[i].split(';');
-                                if (thisusername===username && thispassword===password){
+                                const [thisemail, thispassword] = users[i].split(';');
+                                if (thisemail===email && thispassword===password){
                                     res.write('<h1>Logged in!</h1>');
                                     res.end();
                                     return;
